@@ -1,36 +1,205 @@
-import { NavLink } from "react-router-dom"
+// src/components/Sidebar.jsx
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import {
-  HomeIcon,
+  Bars3Icon,
   BellIcon,
   CubeIcon,
   ChevronRightIcon,
-} from "@heroicons/react/24/outline"
-
-const base =
-  "w-14 h-14 rounded-xl border border-line bg-white grid place-items-center transition shadow-soft"
-const active =
-  "bg-brand-50 border-[rgba(26,125,71,.2)] text-brand relative after:absolute after:right-[-8px] after:h-[22px] after:w-[6px] after:rounded-full after:bg-brand"
+  ChevronLeftIcon,
+  HomeIcon,
+  ClipboardDocumentListIcon,
+  CurrencyDollarIcon,
+  ChartBarIcon,
+  WalletIcon,
+  MagnifyingGlassIcon,
+  ArrowLeftOnRectangleIcon,
+  ArrowRightCircleIcon,
+} from "@heroicons/react/24/outline";
 
 export default function Sidebar() {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const toggleSidebar = () => setIsExpanded(!isExpanded);
+
   return (
-    <aside className="rounded-xl bg-white/80 backdrop-blur-glass border border-line shadow-card p-2 flex flex-col items-center gap-3">
-      <NavLink to="/" className={({ isActive }) => `${base} ${isActive && active}`}>
-        <HomeIcon className="w-5 h-5" />
-      </NavLink>
+    <>
+      {/* Narrow sidebar (always visible) */}
+      <aside
+        className={`
+          fixed left-0 top-0 z-40 h-screen w-16
+          flex flex-col items-center pt-5 pb-6 gap-4
+          bg-gradient-to-b from-emerald-50/80 to-emerald-50/20
+          border-r border-emerald-100/60
+          rounded-r-xl shadow-sm transition-all duration-300
+        `}
+      >
+        {/* Hamburger / Menu toggle */}
+        <button
+          onClick={toggleSidebar}
+          className="
+            w-10 h-10 rounded-xl bg-white/90 hover:bg-white
+            border border-emerald-100/70 flex items-center justify-center
+            text-emerald-600 hover:text-emerald-700 transition-all shadow-sm
+          "
+        >
+          <Bars3Icon className="w-5 h-5 stroke-[2.3]" />
+        </button>
 
-      <NavLink to="/alerts" className={base}>
-        <BellIcon className="w-5 h-5" />
-      </NavLink>
+        {/* Home (dashboard) */}
+        <NavLink
+          to="/dashboard"
+          className={({ isActive }) =>
+            `w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200 ${
+              isActive
+                ? "bg-emerald-50/90 border border-emerald-200 text-emerald-600 shadow-sm"
+                : "bg-white/90 hover:bg-white border border-emerald-100/70 text-gray-600 hover:text-emerald-600 shadow-sm"
+            }`
+          }
+        >
+          <HomeIcon className="w-5 h-5 stroke-[2]" />
+        </NavLink>
 
-      <NavLink to="/inventory" className={base}>
-        <CubeIcon className="w-5 h-5" />
-      </NavLink>
+        {/* Bell */}
+        <button
+          className="
+            w-10 h-10 rounded-xl bg-white/90 hover:bg-white
+            border border-emerald-100/70 flex items-center justify-center
+            text-gray-600 hover:text-emerald-600 transition-all shadow-sm relative
+          "
+        >
+          <BellIcon className="w-5 h-5 stroke-[2]" />
+          <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
+            10
+          </span>
+        </button>
 
-      <div className="flex-1" />
+        {/* Cube / Inventory */}
+        <NavLink
+          to="/inventory"
+          className={({ isActive }) =>
+            `w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200 ${
+              isActive
+                ? "bg-emerald-50/90 border border-emerald-200 text-emerald-600 shadow-sm"
+                : "bg-white/90 hover:bg-white border border-emerald-100/70 text-gray-600 hover:text-emerald-600 shadow-sm"
+            }`
+          }
+        >
+          <CubeIcon className="w-5 h-5 stroke-[2]" />
+        </NavLink>
 
-      <button className={base}>
-        <ChevronRightIcon className="w-5 h-5" />
-      </button>
-    </aside>
-  )
+        <div className="flex-1" />
+
+        {/* Collapse arrow (only shown when expanded, but we use toggle button) */}
+        <button
+          onClick={toggleSidebar}
+          className="
+            w-10 h-10 rounded-xl bg-white/90 hover:bg-white
+            border border-emerald-100/70 flex items-center justify-center
+            text-gray-600 hover:text-emerald-600 transition-all shadow-sm
+          "
+        >
+          <ArrowRightCircleIcon className="w-5 h-5 stroke-[2.3]" />
+        </button>
+      </aside>
+
+      {/* Expanded full sidebar (overlay / slide-in) */}
+      <div
+        className={`
+          fixed inset-0 z-50 bg-black/30 backdrop-blur-sm transition-opacity duration-300
+          ${isExpanded ? "opacity-100" : "opacity-0 pointer-events-none"}
+        `}
+        onClick={toggleSidebar} // click outside to close
+      >
+        <div
+          className={`
+            fixed left-0 top-0 h-screen w-72 bg-white border-r border-gray-200
+            shadow-2xl transform transition-transform duration-300 ease-in-out
+            ${isExpanded ? "translate-x-0" : "-translate-x-full"}
+          `}
+          onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside
+        >
+          {/* Header / User info */}
+          <div className="p-4 border-b border-gray-100 flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center text-white font-bold">
+              SH
+            </div>
+            <div>
+              <p className="font-medium text-gray-900">SH • Shub</p>
+              <p className="text-sm text-gray-500">Seller Console</p>
+            </div>
+            <button
+              onClick={toggleSidebar}
+              className="ml-auto text-gray-500 hover:text-gray-800"
+            >
+              <ChevronLeftIcon className="w-6 h-6" />
+            </button>
+          </div>
+
+          {/* Navigation links */}
+          <nav className="p-3 space-y-1">
+            <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg bg-green-50 text-green-700 font-medium">
+              <CubeIcon className="w-5 h-5" />
+              Inventory
+            </button>
+
+            <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 text-gray-700">
+              <HomeIcon className="w-5 h-5" />
+              Dashboard
+            </button>
+
+            <button className="w-full flex items-center justify-between gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 text-gray-700">
+              <div className="flex items-center gap-3">
+                <BellIcon className="w-5 h-5" />
+                Notifications
+              </div>
+              <span className="bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                10
+              </span>
+            </button>
+
+            <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg bg-green-50/70 text-green-700 font-medium">
+              <span className="text-lg">+</span>
+              Add Listings
+            </button>
+
+            <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 text-gray-700">
+              <ClipboardDocumentListIcon className="w-5 h-5" />
+              My Listings
+            </button>
+
+            <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 text-gray-700">
+              <ClipboardDocumentListIcon className="w-5 h-5" />
+              Bulk Listings
+            </button>
+
+            <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 text-gray-700">
+              <CurrencyDollarIcon className="w-5 h-5" />
+              Sales
+            </button>
+
+            <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 text-gray-700">
+              <ChartBarIcon className="w-5 h-5" />
+              Reports
+            </button>
+
+            <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 text-gray-700">
+              <WalletIcon className="w-5 h-5" />
+              Wallet
+            </button>
+
+            <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 text-gray-700">
+              <MagnifyingGlassIcon className="w-5 h-5" />
+              Search Tickets
+            </button>
+
+            <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 text-gray-700 mt-4">
+              <ArrowLeftOnRectangleIcon className="w-5 h-5" />
+              Logout
+            </button>
+          </nav>
+        </div>
+      </div>
+    </>
+  );
 }
