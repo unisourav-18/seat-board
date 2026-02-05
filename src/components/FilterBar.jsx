@@ -93,7 +93,7 @@ const FilterBar = () => {
                 transition-all duration-200 border
                 ${
                   activeFilter === label
-                    ? 'bg-green-600 text-white border-green-600 shadow-sm'
+                    ? 'bg-emerald-600 text-white border-green-600 shadow-sm'
                     : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50 hover:border-gray-400'
                 }
               `}

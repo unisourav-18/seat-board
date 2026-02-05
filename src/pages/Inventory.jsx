@@ -2,11 +2,14 @@
 
 import EventCard from "../components/EventCard";
 import FilterBar from "../components/FilterBar";
+import Topbar from "../components/Topbar";
 
 export default function Inventory() {
   return (
     <div className="bg-gray-50 min-h-screen pb-10">
-      {/* STATS ROW */}
+      <Topbar />
+      
+      {/* STATS ROW - With exact gradient effect from CSS */}
       <div className="grid grid-cols-6 gap-4 mb-6 px-6 pt-6">
         {[
           { title: "Total Events", value: "3", tag: "Overview" },
@@ -16,22 +19,35 @@ export default function Inventory() {
         ].map((item, i) => (
           <div
             key={i}
-            className="bg-white rounded-xl p-4 shadow-sm border border-gray-100"
+            className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 relative overflow-hidden group hover:shadow-md transition-shadow duration-200"
           >
-            <div className="flex items-center justify-between text-sm text-gray-500 mb-1">
+            {/* Exact gradient effect from CSS - with darker green */}
+            <div 
+              className="absolute pointer-events-none"
+              style={{
+                inset: '-56px -70px auto auto',
+                width: '180px',
+                height: '180px',
+                borderRadius: '999px',
+                background: 'radial-gradient(circle at 30% 30%, rgba(20, 100, 57, 0.18), transparent 62%)',
+                transform: 'rotate(12deg)',
+              }}
+            />
+            
+            <div className="flex items-center justify-between text-sm text-gray-500 mb-1 relative z-10">
               <span>{item.title}</span>
               <span className="px-2.5 py-0.5 bg-green-50 text-green-700 rounded-full text-xs font-medium">
                 {item.tag}
               </span>
             </div>
-            <div className="text-2xl font-semibold text-gray-800">
+            <div className="text-2xl font-semibold text-gray-800 relative z-10">
               {item.value}
             </div>
           </div>
         ))}
 
-        {/* Tickets - conic gradient pie */}
-        <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+        {/* Tickets card - NO gradient effect */}
+        <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 group hover:shadow-md transition-shadow duration-200">
           <p className="text-sm font-medium text-gray-700 mb-2">Tickets</p>
           <div className="relative h-20 w-20 mx-auto">
             <div
@@ -51,8 +67,8 @@ export default function Inventory() {
           </p>
         </div>
 
-        {/* Health - conic gradient pie */}
-        <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+        {/* Health card - NO gradient effect */}
+        <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 group hover:shadow-md transition-shadow duration-200">
           <p className="text-sm font-medium text-gray-700 mb-2">Health</p>
           <div className="relative h-20 w-20 mx-auto">
             <div
@@ -99,9 +115,22 @@ export default function Inventory() {
           <EventCard />
         </div>
 
-        {/* Footer – aligned with event cards (px-5 internal padding) */}
-        <div className="mt-6 bg-white rounded-xl border border-gray-200 shadow-sm">
-          <div className="px-5 py-3.5 flex flex-wrap items-center justify-between gap-4 text-sm">
+        {/* Footer card with gradient effect */}
+        <div className="mt-6 bg-white rounded-xl border border-gray-200 shadow-sm relative overflow-hidden group hover:shadow-md transition-shadow duration-200">
+          {/* Gradient effect for footer card - with darker green */}
+          <div 
+            className="absolute pointer-events-none"
+            style={{
+              inset: '-56px -70px auto auto',
+              width: '180px',
+              height: '180px',
+              borderRadius: '999px',
+              background: 'radial-gradient(circle at 30% 30%, rgba(20, 100, 57, 0.18), transparent 62%)',
+              transform: 'rotate(12deg)',
+            }}
+          />
+          
+          <div className="px-5 py-3.5 flex flex-wrap items-center justify-between gap-4 text-sm relative z-10">
             {/* Left actions */}
             <div className="flex flex-wrap items-center gap-x-5 gap-y-2 min-w-0">
               <button className="text-gray-700 hover:text-green-700 font-medium transition-colors whitespace-nowrap">

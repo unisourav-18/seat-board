@@ -6,7 +6,7 @@ export default function Topbar() {
       {/* Left: Logo + Title */}
       <div className="flex items-center gap-4">
         {/* Green circle logo */}
-        <div className="w-10 h-10 rounded-xl bg-green-600 flex items-center justify-center shadow-md">
+        <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-emerald-700 to-emerald-500 flex items-center justify-center shadow-md">
           {/* You can put an icon or letter here if needed */}
           {/* e.g. <span className="text-white font-bold text-xl">I</span> */}
         </div>
@@ -46,7 +46,7 @@ export default function Topbar() {
         </button>
 
         {/* Add Listing button */}
-        <button className="px-5 py-2.5 bg-green-600 text-white rounded-lg text-sm font-medium hover:bg-green-700 shadow-md transition-colors">
+        <button className="px-5 py-2.5 bg-emerald-600 text-white rounded-lg text-sm font-medium hover:bg-green-700 shadow-md transition-colors">
           + Add Listing
         </button>
       </div>

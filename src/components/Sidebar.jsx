@@ -1,11 +1,12 @@
 // src/components/Sidebar.jsx
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useSidebar } from "../context/SidebarContext";
 import {
   Bars3Icon,
   BellIcon,
   CubeIcon,
-  ChevronRightIcon,
   ChevronLeftIcon,
   HomeIcon,
   ClipboardDocumentListIcon,
@@ -18,7 +19,8 @@ import {
 } from "@heroicons/react/24/outline";
 
 export default function Sidebar() {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const location = useLocation();
+  const { isExpanded, setIsExpanded } = useSidebar();
 
   const toggleSidebar = () => setIsExpanded(!isExpanded);
 
@@ -47,18 +49,12 @@ export default function Sidebar() {
         </button>
 
         {/* Home (dashboard) */}
-        <NavLink
-          to="/dashboard"
-          className={({ isActive }) =>
-            `w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200 ${
-              isActive
-                ? "bg-emerald-50/90 border border-emerald-200 text-emerald-600 shadow-sm"
-                : "bg-white/90 hover:bg-white border border-emerald-100/70 text-gray-600 hover:text-emerald-600 shadow-sm"
-            }`
-          }
+        <button
+          type="button"
+          className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200 bg-white/90 hover:bg-white border border-emerald-100/70 text-gray-600 hover:text-emerald-600 shadow-sm"
         >
           <HomeIcon className="w-5 h-5 stroke-[2]" />
-        </NavLink>
+        </button>
 
         {/* Bell */}
         <button
@@ -90,7 +86,6 @@ export default function Sidebar() {
 
         <div className="flex-1" />
 
-        {/* Collapse arrow (only shown when expanded, but we use toggle button) */}
         <button
           onClick={toggleSidebar}
           className="
@@ -103,13 +98,13 @@ export default function Sidebar() {
         </button>
       </aside>
 
-      {/* Expanded full sidebar (overlay / slide-in) */}
+      {/* Expanded sidebar */}
       <div
         className={`
           fixed inset-0 z-50 bg-black/30 backdrop-blur-sm transition-opacity duration-300
           ${isExpanded ? "opacity-100" : "opacity-0 pointer-events-none"}
         `}
-        onClick={toggleSidebar} // click outside to close
+        onClick={toggleSidebar}
       >
         <div
           className={`
@@ -117,38 +112,58 @@ export default function Sidebar() {
             shadow-2xl transform transition-transform duration-300 ease-in-out
             ${isExpanded ? "translate-x-0" : "-translate-x-full"}
           `}
-          onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside
+          onClick={(e) => e.stopPropagation()}
         >
-          {/* Header / User info */}
-          <div className="p-4 border-b border-gray-100 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center text-white font-bold">
-              SH
-            </div>
-            <div>
-              <p className="font-medium text-gray-900">SH • Shub</p>
-              <p className="text-sm text-gray-500">Seller Console</p>
+          {/* User header */}
+          <div className="p-4 border-b border-gray-100 flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-emerald-700 flex items-center justify-center text-white font-bold">
+                SH
+              </div>
+              <div>
+                <p className="font-medium text-gray-900">SH • Shub</p>
+                <p className="text-sm text-gray-500">Seller Console</p>
+              </div>
             </div>
             <button
               onClick={toggleSidebar}
-              className="ml-auto text-gray-500 hover:text-gray-800"
+              className="text-gray-500 hover:text-gray-800"
             >
               <ChevronLeftIcon className="w-6 h-6" />
             </button>
           </div>
 
-          {/* Navigation links */}
+          {/* Navigation */}
           <nav className="p-3 space-y-1">
-            <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg bg-green-50 text-green-700 font-medium">
+            {/* Inventory - NavLink */}
+            <NavLink
+              to="/inventory"
+              className={({ isActive }) =>
+                `w-full flex items-center gap-3 px-4 py-2.5 rounded-lg transition font-medium ${
+                  isActive
+                    ? "bg-gradient-to-b from-emerald-50/80 to-emerald-100/60 text-emerald-700 border border-emerald-200/50"
+                    : "hover:bg-gray-50 text-gray-700"
+                }`
+              }
+            >
               <CubeIcon className="w-5 h-5" />
               Inventory
-            </button>
+            </NavLink>
 
-            <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 text-gray-700">
+            {/* Dashboard - Regular button */}
+            <button
+              type="button"
+              className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 text-gray-700 transition"
+            >
               <HomeIcon className="w-5 h-5" />
               Dashboard
             </button>
 
-            <button className="w-full flex items-center justify-between gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 text-gray-700">
+            {/* Notifications - Regular Link */}
+            <Link
+              to="#"
+              className="w-full flex items-center justify-between gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 text-gray-700 transition"
+            >
               <div className="flex items-center gap-3">
                 <BellIcon className="w-5 h-5" />
                 Notifications
@@ -156,47 +171,91 @@ export default function Sidebar() {
               <span className="bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
                 10
               </span>
-            </button>
+            </Link>
 
-            <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg bg-green-50/70 text-green-700 font-medium">
-              <span className="text-lg">+</span>
+            {/* Add Listings - NavLink */}
+            <NavLink
+              to="/addlisting"
+              className={({ isActive }) =>
+                `w-full flex items-center gap-3 px-4 py-2.5 rounded-lg transition font-medium ${
+                  isActive
+                    ? "bg-gradient-to-b from-emerald-50/80 to-emerald-100/60 text-emerald-700 border border-emerald-200/50"
+                    : "hover:bg-gray-50 text-gray-700"
+                }`
+              }
+            >
+              <span className="text-lg font-bold">+</span>
               Add Listings
-            </button>
+            </NavLink>
 
-            <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 text-gray-700">
+            {/* My Listings - Regular Link */}
+            <Link
+              to="#"
+              className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 text-gray-700 transition"
+            >
               <ClipboardDocumentListIcon className="w-5 h-5" />
               My Listings
-            </button>
+            </Link>
 
-            <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 text-gray-700">
+            {/* Bulk Listings - Regular Link */}
+            <Link
+              to="#"
+              className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 text-gray-700 transition"
+            >
               <ClipboardDocumentListIcon className="w-5 h-5" />
               Bulk Listings
-            </button>
+            </Link>
 
-            <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 text-gray-700">
+            {/* Sales - Regular Link */}
+            <Link
+              to="#"
+              className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 text-gray-700 transition"
+            >
               <CurrencyDollarIcon className="w-5 h-5" />
               Sales
-            </button>
+            </Link>
 
-            <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 text-gray-700">
+            {/* Reports - NavLink */}
+            <NavLink
+              to="/reports"
+              className={({ isActive }) =>
+                `w-full flex items-center gap-3 px-4 py-2.5 rounded-lg transition font-medium ${
+                  isActive
+                    ? "bg-gradient-to-b from-emerald-50/80 to-emerald-100/60 text-emerald-700 border border-emerald-200/50"
+                    : "hover:bg-gray-50 text-gray-700"
+                }`
+              }
+            >
               <ChartBarIcon className="w-5 h-5" />
               Reports
-            </button>
+            </NavLink>
 
-            <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 text-gray-700">
+            {/* Wallet - Regular Link */}
+            <Link
+              to="#"
+              className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 text-gray-700 transition"
+            >
               <WalletIcon className="w-5 h-5" />
               Wallet
-            </button>
+            </Link>
 
-            <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 text-gray-700">
+            {/* Search Tickets - Regular Link */}
+            <Link
+              to="#"
+              className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 text-gray-700 transition"
+            >
               <MagnifyingGlassIcon className="w-5 h-5" />
               Search Tickets
-            </button>
+            </Link>
 
-            <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 text-gray-700 mt-4">
-              <ArrowLeftOnRectangleIcon className="w-5 h-5" />
+            {/* Logout - Regular Link */}
+            <Link
+              to="#"
+              className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-gray-50 text-gray-700 mt-4 transition"
+            >
+              <ArrowRightCircleIcon className="w-5 h-5" />
               Logout
-            </button>
+            </Link>
           </nav>
         </div>
       </div>

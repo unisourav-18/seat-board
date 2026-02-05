@@ -4,6 +4,7 @@ import Inventory from "./pages/Inventory.jsx";
 import EventDetails from "./pages/EventDetails.jsx";
 import Addlisting from "./pages/Addlisting.jsx";   // ← NEW IMPORT
 import AppLayout from "./layout/AppLayout";
+import Reports from "./pages/Reports.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,8 +24,13 @@ const router = createBrowserRouter([
         element: <EventDetails />,
       },
       {
-        path: "add-listing",           // ← NEW ROUTE
+        path: "addlisting",           // ← NEW ROUTE
         element: <Addlisting />,       // ← NEW PAGE
+      },
+      // src/router.jsx (inside children array)
+      {
+        path: "reports",
+        element: <Reports />,
       },
     ],
   },

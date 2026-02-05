@@ -147,7 +147,7 @@ const EventCard = ({ expanded = false }) => {
             <button className="h-10 px-5 border border-gray-300 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-50">
               Clone
             </button>
-            <button className="h-10 px-6 bg-green-600 text-white rounded-lg text-sm font-medium hover:bg-green-700">
+            <button className="h-10 px-6 bg-emerald-600 text-white rounded-lg text-sm font-medium hover:bg-green-700">
               Save
             </button>
           </div>
