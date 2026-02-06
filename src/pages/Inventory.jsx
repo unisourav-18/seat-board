@@ -78,7 +78,7 @@ export default function Inventory() {
               }}
             />
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="h-12 w-12 bg-white rounded-full flex items-center justify-center text-xs font-medium text-green-700 shadow-sm">
+              <div className="h-12 w-12 bg-white rounded-full flex items-center justify-center text-xs font-medium text-emerald-700 shadow-sm">
                 OK
               </div>
             </div>
