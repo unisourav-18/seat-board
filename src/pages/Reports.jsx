@@ -34,6 +34,16 @@ export default function Reports() {
     Object.values(r).some(v => String(v).toLowerCase().includes(search.toLowerCase().trim()))
   );
 
+  // Function to open date picker
+  const openDatePicker = (inputId) => {
+    const input = document.getElementById(inputId);
+    if (input) {
+      input.type = "date";
+      input.showPicker();
+      input.focus();
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#f7faf8] p-2 sm:p-3 lg:p-4">
       <div className="w-full mx-auto">
@@ -110,7 +120,7 @@ export default function Reports() {
               ))}
             </div>
 
-            {/* Compact Filters - Updated to match screenshot */}
+            {/* Compact Filters - Updated with functional calendar icons */}
             <div className="bg-white border border-[#e7efe9] rounded-xl sm:rounded-2xl shadow-[0_6px_15px_rgba(2,6,23,0.06)] p-3 sm:p-4 mb-4 sm:mb-6">
               {/* First row of filters - Updated to 5 equal columns (no Export CSV button) */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2 sm:gap-3 mb-2 sm:mb-3">
@@ -145,7 +155,7 @@ export default function Reports() {
                   </div>
                 </div>
 
-                {/* Transaction Date */}
+                {/* Transaction Date - Fixed with functional calendar */}
                 <div>
                   <label className="block text-[10px] xs:text-xs font-black uppercase text-gray-500 tracking-wider mb-1">Transaction Date</label>
                   <div className="relative">
@@ -153,18 +163,33 @@ export default function Reports() {
                       type="text"
                       value={transactionDate}
                       onChange={e => setTransactionDate(e.target.value)}
+                      onFocus={(e) => {
+                        e.target.type = "date";
+                        e.target.placeholder = "";
+                      }}
+                      onBlur={(e) => {
+                        if (!e.target.value) {
+                          e.target.type = "text";
+                          e.target.placeholder = "mm / dd / yyyy";
+                        }
+                      }}
                       placeholder="mm / dd / yyyy"
-                      className="w-full h-9 sm:h-10 px-2.5 sm:px-3 border border-[#e7efe9] rounded-lg sm:rounded-xl bg-white text-gray-900 font-medium focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none text-xs sm:text-sm placeholder-gray-400"
+                      id="transactionDateInput"
+                      className="w-full h-9 sm:h-10 px-2.5 sm:px-3 pr-10 border border-[#e7efe9] rounded-lg sm:rounded-xl bg-white text-gray-900 font-medium focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none text-xs sm:text-sm placeholder-gray-400"
                     />
-                    <div className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-                      <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <button
+                      type="button"
+                      onClick={() => openDatePicker("transactionDateInput")}
+                      className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 cursor-pointer"
+                    >
+                      <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
-                    </div>
+                    </button>
                   </div>
                 </div>
 
-                {/* Event Date */}
+                {/* Event Date - Fixed with functional calendar */}
                 <div>
                   <label className="block text-[10px] xs:text-xs font-black uppercase text-gray-500 tracking-wider mb-1">Event Date</label>
                   <div className="relative">
@@ -172,14 +197,29 @@ export default function Reports() {
                       type="text"
                       value={eventDate}
                       onChange={e => setEventDate(e.target.value)}
+                      onFocus={(e) => {
+                        e.target.type = "date";
+                        e.target.placeholder = "";
+                      }}
+                      onBlur={(e) => {
+                        if (!e.target.value) {
+                          e.target.type = "text";
+                          e.target.placeholder = "mm / dd / yyyy";
+                        }
+                      }}
                       placeholder="mm / dd / yyyy"
-                      className="w-full h-9 sm:h-10 px-2.5 sm:px-3 border border-[#e7efe9] rounded-lg sm:rounded-xl bg-white text-gray-900 font-medium focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none text-xs sm:text-sm placeholder-gray-400"
+                      id="eventDateInput"
+                      className="w-full h-9 sm:h-10 px-2.5 sm:px-3 pr-10 border border-[#e7efe9] rounded-lg sm:rounded-xl bg-white text-gray-900 font-medium focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none text-xs sm:text-sm placeholder-gray-400"
                     />
-                    <div className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-                      <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <button
+                      type="button"
+                      onClick={() => openDatePicker("eventDateInput")}
+                      className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 cursor-pointer"
+                    >
+                      <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
-                    </div>
+                    </button>
                   </div>
                 </div>
 
