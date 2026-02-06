@@ -145,7 +145,7 @@ export default function Reports() {
                     <select 
                       value={venue}
                       onChange={e => setVenue(e.target.value)}
-                      className="w-full h-9 sm:h-10 px-2.5 sm:px-3 pr-8 sm:pr-10 border border-[#e7efe9] rounded-lg sm:rounded-xl bg-white text-gray-900 font-medium appearance-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none text-xs sm:text-sm"
+                      className="w-full h-9 sm:h-10 px-2.5 sm:px-3 pr-8 sm:pr-10 border border-[#e7efe9] rounded-lg sm:rounded-xl bg-white text-gray-900 font-medium appearance-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-700 focus:border-emerald-700 outline-none text-xs sm:text-sm"
                     >
                       <option value="">Venue</option>
                       <option value="Old Trafford">Old Trafford</option>
@@ -175,7 +175,7 @@ export default function Reports() {
                       }}
                       placeholder="mm / dd / yyyy"
                       id="transactionDateInput"
-                      className="w-full h-9 sm:h-10 px-2.5 sm:px-3 pr-10 border border-[#e7efe9] rounded-lg sm:rounded-xl bg-white text-gray-900 font-medium focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none text-xs sm:text-sm placeholder-gray-400"
+                      className="w-full h-9 sm:h-10 px-2.5 sm:px-3 pr-10 border border-[#e7efe9] rounded-lg sm:rounded-xl bg-white text-gray-900 font-medium focus:border-emerald-700 focus:ring-1 focus:ring-emerald-700 outline-none text-xs sm:text-sm placeholder-gray-400"
                     />
                     <button
                       type="button"
@@ -235,7 +235,7 @@ export default function Reports() {
                     <select 
                       value={teamMembers}
                       onChange={e => setTeamMembers(e.target.value)}
-                      className="w-full h-9 sm:h-10 px-2.5 sm:px-3 pr-8 sm:pr-10 border border-[#e7efe9] rounded-lg sm:rounded-xl bg-white text-gray-900 font-medium appearance-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none text-xs sm:text-sm"
+                      className="w-full h-9 sm:h-10 px-2.5 sm:px-3 pr-8 sm:pr-10 border border-[#e7efe9] rounded-lg sm:rounded-xl bg-white text-gray-900 font-medium appearance-none focus:border-emerald-700 focus:ring-1 focus:ring-emerald-700 outline-none text-xs sm:text-sm"
                     >
                       <option value="">Team Members</option>
                       <option value="Shub">Shub</option>
@@ -252,7 +252,7 @@ export default function Reports() {
                     <select 
                       value={orderStatus}
                       onChange={e => setOrderStatus(e.target.value)}
-                      className="w-full h-9 sm:h-10 px-2.5 sm:px-3 pr-8 sm:pr-10 border border-[#e7efe9] rounded-lg sm:rounded-xl bg-white text-gray-900 font-medium appearance-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none text-xs sm:text-sm"
+                      className="w-full h-9 sm:h-10 px-2.5 sm:px-3 pr-8 sm:pr-10 border border-[#e7efe9] rounded-lg sm:rounded-xl bg-white text-gray-900 font-medium appearance-none focus:border-emerald-700 focus:ring-1 focus:ring-emerald-700 outline-none text-xs sm:text-sm"
                     >
                       <option value="">Order Status</option>
                       <option value="awaiting">Awaiting</option>
@@ -270,7 +270,7 @@ export default function Reports() {
                     <select 
                       value={paymentStatus}
                       onChange={e => setPaymentStatus(e.target.value)}
-                      className="w-full h-9 sm:h-10 px-2.5 sm:px-3 pr-8 sm:pr-10 border border-[#e7efe9] rounded-lg sm:rounded-xl bg-white text-gray-900 font-medium appearance-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none text-xs sm:text-sm"
+                      className="w-full h-9 sm:h-10 px-2.5 sm:px-3 pr-8 sm:pr-10 border border-[#e7efe9] rounded-lg sm:rounded-xl bg-white text-gray-900 font-medium appearance-none focus:border-emerald-700 focus:ring-1 focus:ring-emerald-700 outline-none text-xs sm:text-sm"
                     >
                       <option value="">Payment Status</option>
                       <option value="paid">Paid</option>
@@ -287,7 +287,7 @@ export default function Reports() {
                     <select 
                       value={category}
                       onChange={e => setCategory(e.target.value)}
-                      className="w-full h-9 sm:h-10 px-2.5 sm:px-3 pr-8 sm:pr-10 border border-[#e7efe9] rounded-lg sm:rounded-xl bg-white text-gray-900 font-medium appearance-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none text-xs sm:text-sm"
+                      className="w-full h-9 sm:h-10 px-2.5 sm:px-3 pr-8 sm:pr-10 border border-[#e7efe9] rounded-lg sm:rounded-xl bg-white text-gray-900 font-medium appearance-none focus:border-emerald-700 focus:ring-1 focus:ring-emerald-700 outline-none text-xs sm:text-sm"
                     >
                       <option value="">Category</option>
                       <option value="Shortside Upper Tier">Shortside Upper Tier</option>

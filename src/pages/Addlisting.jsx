@@ -89,7 +89,7 @@ export default function AddListing() {
               <ChevronLeftIcon className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
             <div>
-              <h1 className="text-base sm:text-xl font-bold text-emerald-900">
+              <h1 className="text-base sm:text-xl font-bold text-grey-900">
                 Add Inventory
               </h1>
               <p className="text-xs sm:text-sm text-gray-600">
