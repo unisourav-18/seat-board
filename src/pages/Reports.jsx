@@ -209,7 +209,7 @@ export default function Reports() {
                       }}
                       placeholder="mm / dd / yyyy"
                       id="eventDateInput"
-                      className="w-full h-9 sm:h-10 px-2.5 sm:px-3 pr-10 border border-[#e7efe9] rounded-lg sm:rounded-xl bg-white text-gray-900 font-medium focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none text-xs sm:text-sm placeholder-gray-400"
+                      className="w-full h-9 sm:h-10 px-2.5 sm:px-3 pr-10 border border-[#e7efe9] rounded-lg sm:rounded-xl bg-white text-gray-900 font-medium focus:border-emerald-700 focus:ring-1 focus:ring-emerald-700 outline-none text-xs sm:text-sm placeholder-gray-400"
                     />
                     <button
                       type="button"
