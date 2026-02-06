@@ -133,7 +133,7 @@ export default function Reports() {
                       value={search}
                       onChange={e => setSearch(e.target.value)}
                       placeholder="Search Match event or Booking number"
-                      className="w-full h-9 sm:h-10 pl-8 sm:pl-10 pr-3 border border-[#e7efe9] rounded-lg sm:rounded-xl bg-white text-gray-900 font-medium focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none text-xs sm:text-sm"
+                      className="w-full h-9 sm:h-10 pl-8 sm:pl-10 pr-3 border border-[#e7efe9] rounded-lg sm:rounded-xl bg-white text-gray-900 font-medium focus:border-emerald-700 focus:ring-1 focus:ring-emerald-700 outline-none text-xs sm:text-sm"
                     />
                   </div>
                 </div>
