@@ -19,7 +19,7 @@ const FilterBar = () => {
             min-w-[220px] flex-1 h-10 px-4 
             border border-gray-300 rounded-lg 
             text-sm placeholder-gray-400 
-            focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500
+            focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:border-emerald-700
           "
         />
 
@@ -29,7 +29,7 @@ const FilterBar = () => {
             h-10 min-w-[140px] px-3 
             border border-gray-300 rounded-lg 
             text-sm text-gray-700 
-            focus:outline-none focus:ring-2 focus:ring-green-500
+            focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:border-emerald-700
           "
         >
           <option>Team members</option>
@@ -45,7 +45,7 @@ const FilterBar = () => {
               h-10 w-full pl-9 pr-4 
               border border-gray-300 rounded-lg 
               text-sm text-gray-700 
-              focus:outline-none focus:ring-2 focus:ring-green-500
+              focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:border-emerald-700
             "
           />
           <CalendarIcon 
@@ -59,7 +59,7 @@ const FilterBar = () => {
             h-10 min-w-[140px] px-3 
             border border-gray-300 rounded-lg 
             text-sm text-gray-700 
-            focus:outline-none focus:ring-2 focus:ring-green-500
+            focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:border-emerald-700
           "
         >
           <option>Ticket type</option>
@@ -73,7 +73,7 @@ const FilterBar = () => {
             h-10 min-w-[140px] px-3 
             border border-gray-300 rounded-lg 
             text-sm text-gray-700 
-            focus:outline-none focus:ring-2 focus:ring-green-500
+            focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:border-emerald-700
           "
         >
           <option>Category</option>

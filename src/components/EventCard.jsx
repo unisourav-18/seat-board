@@ -91,21 +91,21 @@ const EventCard = ({ expanded = false }) => {
         <div className="px-5 pb-5 border-t border-gray-100 bg-gray-50/40">
           {/* Dropdown row */}
           <div className="grid grid-cols-4 gap-3 mt-5 mb-4">
-            <select className="h-10 px-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
+            <select className="h-10 px-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:border-emerald-700">
               <option>Ticket type: Mobile Ticket</option>
               <option>Paper Ticket</option>
             </select>
-            <select className="h-10 px-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
+            <select className="h-10 px-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:border-emerald-700">
               <option>Seating: Longside Upper Tier</option>
               <option>Longside Lower Tier</option>
               <option>Shortside Upper Tier</option>
             </select>
-            <select className="h-10 px-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
+            <select className="h-10 px-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:border-emerald-700">
               <option>Section/Block: No Block</option>
               <option>A</option>
               <option>B</option>
             </select>
-            <select className="h-10 px-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
+            <select className="h-10 px-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:border-emerald-700">
               <option>Fan area: Home</option>
               <option>Away</option>
               <option>Neutral</option>
@@ -115,34 +115,34 @@ const EventCard = ({ expanded = false }) => {
           {/* Input row */}
           <div className="flex items-center gap-3 flex-wrap">
             <input
-              className="h-10 w-24 px-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="h-10 w-24 px-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:border-emerald-700"
               placeholder="Row"
             />
             <input
               type="number"
               defaultValue="1"
               min="0"
-              className="h-10 w-20 px-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="h-10 w-20 px-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:border-emerald-700"
               placeholder="Qty"
             />
             <input
               type="number"
               defaultValue="0"
               min="0"
-              className="h-10 w-20 px-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="h-10 w-20 px-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:border-emerald-700"
               placeholder="Sold"
             />
             <input
               type="number"
               defaultValue="60"
               min="0"
-              className="h-10 w-24 px-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="h-10 w-24 px-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:border-emerald-700"
               placeholder="Face value"
             />
             <input
               type="number"
               placeholder="Price"
-              className="h-10 w-28 px-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="h-10 w-28 px-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:border-emerald-700"
             />
             <button className="h-10 px-5 border border-gray-300 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-50">
               Clone
